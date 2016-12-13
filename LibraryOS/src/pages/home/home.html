@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar transparent>
+    <ion-title>
+      Books
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+  <ion-item *ngFor="let book of books">
+    <h2>{{book.Name}}</h2>
+    <p>{{book.Details.Author}}</p>
+    <button ion-button clear item-right>Details</button>
+  </ion-item>
+</ion-list>
+</ion-content>
+
+
+
