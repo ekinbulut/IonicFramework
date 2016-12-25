@@ -5,7 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
+var methodOverride = require('method-override')
+var cors = require('cors');
 
 
 //var index = require('./routes/index');
@@ -16,6 +17,7 @@ var app = express();
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", '*');
+  res.header('Access-Control-Allow-Methods', 'DELETE, PUT');
   res.header("Access-Control-Allow-Headers", 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
@@ -28,12 +30,15 @@ app.set('view engine', 'ejs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride());
+app.use(cors());
 
 //app.use('/', index);
-app.use('/books', books);
+app.use('/', books);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

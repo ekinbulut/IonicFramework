@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
@@ -24,13 +24,24 @@ export class BookService {
 
     return new Promise(resolve => {
 
-      this.http.get('http://192.168.0.16:3000/Books')
+      this.http.get('http://192.168.0.16:3000/api/Books')
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
           resolve(this.data);
         });
     });
+  }
+
+  createBook(book) {
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    this.http.post('http://192.168.0.16:3000/api/books', JSON.stringify(book), { headers: headers })
+      .subscribe(res => {
+        console.log(res.json());
+      });
   }
 
 }

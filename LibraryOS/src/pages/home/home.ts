@@ -2,13 +2,16 @@ import { Component } from '@angular/core';
 
 import { NavController, ModalController } from 'ionic-angular';
 import { BookService } from '../../providers/book-service';
+import { AddBookPage } from '../add-book/add-book';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  providers:[BookService]
+  providers: [BookService]
 })
 export class HomePage {
+
+  addbookpage = AddBookPage;
 
   public books: any;
   constructor(public nav: NavController, public bookService: BookService, public modalCtrl: ModalController) {
@@ -20,5 +23,18 @@ export class HomePage {
       console.log(data);
       this.books = data;
     });
+  }
+
+  addBook() {
+    let modal = this.modalCtrl.create(AddBookPage);
+
+    modal.onDidDismiss(book => {
+      if (book) {
+        this.books.push(book);
+        this.bookService.createBook(book);
+      }
+    });
+
+    modal.present();
   }
 }

@@ -3,6 +3,12 @@
     <ion-title>
       Books
     </ion-title>
+    <ion-buttons end>
+      <!--<button ion-button icon-only [navPush]="addbookpage">-->
+        <button ion-button icon-only (click)="addBook()">
+        <ion-icon ios="ios-add" md="md-add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -11,7 +17,8 @@
   <ion-item *ngFor="let book of books">
     <h2>{{book.Name}}</h2>
     <p>{{book.Details.Author}}</p>
-    <button ion-button clear item-right>Details</button>
+    <button ion-button clear item-right>Details
+    </button>
   </ion-item>
 </ion-list>
 </ion-content>
