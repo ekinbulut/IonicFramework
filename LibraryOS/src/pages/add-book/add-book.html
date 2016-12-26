@@ -6,9 +6,12 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-toolbar transparent>
     <ion-title>Add Book</ion-title>
-  </ion-navbar>
+    <ion-buttons end>
+    <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
+  </ion-buttons>
+  </ion-toolbar>
 
 </ion-header>
 
@@ -18,6 +21,46 @@
     <ion-item>
       <ion-label floating>Name</ion-label>
       <ion-input [(ngModel)]="Name" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Authors</ion-label>
+      <ion-select [(ngModel)]="Author">
+        <ion-option [value]="author" *ngFor="let author of authors">{{author}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Publisher</ion-label>
+      <ion-select [(ngModel)]="Publisher">
+        <ion-option [value]="category" *ngFor="let category of categories">{{category}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Publish Date</ion-label>
+      <ion-input [(ngModel)]="PublishDate" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Genre</ion-label>
+      <ion-select [(ngModel)]="Genre">
+        <ion-option [value]="genre" *ngFor="let genre of genres">{{genre}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Series</ion-label>
+      <ion-select [(ngModel)]="Serie">
+        <ion-option [value]="serie" *ngFor="let serie of series">{{serie}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Shelfs</ion-label>
+      <ion-select [(ngModel)]="Shelf">
+        <ion-option [value]="shelf" *ngFor="let shelf of shelfs">{{shelf}}</ion-option>
+      </ion-select>
+    </ion-item>
+        <ion-item>
+      <ion-label>Rack</ion-label>
+      <ion-select [(ngModel)]="RackNumber">
+        <ion-option [value]="rack" *ngFor="let rack of racks">{{rack}}</ion-option>
+      </ion-select>
     </ion-item>
   </ion-list>
 

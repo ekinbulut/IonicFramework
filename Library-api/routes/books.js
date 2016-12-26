@@ -4,7 +4,8 @@ var mongoose = require('mongoose');
 
 var Books = require('../models/Book.js');
 
-/* GET users listing. */
+
+/* GET book records. */
 router.get('/api/books', function (req, res, next) {
 
   Books.find(function (err, books) {
@@ -13,6 +14,7 @@ router.get('/api/books', function (req, res, next) {
   });
 });
 
+/* GET book by id */
 router.get('/api/books/:id', function (req, res, next) {
   Books.findById(req.params.id, function (err, post) {
     if (err) return next(err);
@@ -20,15 +22,16 @@ router.get('/api/books/:id', function (req, res, next) {
   });
 });
 
-router.post('/api/books/', function (req, res,next) {
+/* POST request to insert a book */
+router.post('/api/books/', function (req, res, next) {
 
   Books.create({
 
-    _id:mongoose.Types.ObjectId().toString(),
+    _id: mongoose.Types.ObjectId().toString(),
     Name: req.body.Name,
     CreationDate: new Date().toISOString(),
     Details: {
-      _id:null,
+      _id: null,
       CreationDate: new Date().toISOString(),
       Author: req.body.Details.Author,
       Publisher: req.body.Details.Publisher,
@@ -50,4 +53,63 @@ router.post('/api/books/', function (req, res,next) {
 
 });
 
+/* GET categories  */
+router.get('/api/categories', function (req, res, next) {
+
+  Books.find().distinct('Details.Publisher', function (err, categories) {
+    if (err) return next(err);
+    res.json(categories);
+
+  });
+});
+
+router.get('/api/series', function (req, res, next) {
+
+  Books.find().distinct('Details.Series', function (err, series) {
+    if (err) return next(err);
+    res.json(series);
+
+  });
+});
+
+router.get('/api/author', function (req, res, next) {
+
+  Books.find().distinct('Details.Author', function (err, author) {
+    if (err) return next(err);
+    res.json(author);
+
+  });
+});
+
+router.get('/api/genre', function (req, res, next) {
+
+  Books.find().distinct('Details.Genre', function (err, genre) {
+    if (err) return next(err);
+    res.json(genre);
+
+  });
+});
+
+router.get('/api/shelf', function (req, res, next) {
+
+  Books.find().distinct('Details.Shelf', function (err, shelf) {
+    if (err) return next(err);
+    res.json(shelf);
+
+  });
+});
+
+
+router.get('/api/rack', function (req, res, next) {
+
+  Books.find().distinct('Details.RackNumber', function (err, rack) {
+    if (err) return next(err);
+    res.json(rack);
+
+  });
+});
+
+
 module.exports = router;
+
+
