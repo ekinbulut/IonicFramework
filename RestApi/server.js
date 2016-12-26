@@ -2,6 +2,7 @@ var express = require('express');        // call express
 var app = express();                 // define our app using express
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var logger = require('morgan');
 //var book = require('./app/models/Book');
 
 mongoose.connect('mongodb://localhost:27017/LibraryOS');
@@ -16,6 +17,7 @@ app.use(function(req, res, next) {
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
+app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
