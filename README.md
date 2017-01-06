@@ -2,9 +2,10 @@
 
 This projects is developed for Ionic Framework learning.
 
-Purpose : 
+###Purpose : 
+
 Developing a LibraryOS web application by using ionic features.
 
-Development : 
+###Development : 
 
 It has two parts which are LibraryOS, the UI itself and RestAPI which connects to mongodb and handle the revieved requests.
