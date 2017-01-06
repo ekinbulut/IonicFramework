@@ -7,6 +7,7 @@ var logger = require('morgan');
 
 mongoose.connect('mongodb://localhost:27017/LibraryOS');
 
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", '*');
   res.header('Access-Control-Allow-Methods', 'DELETE, PUT');

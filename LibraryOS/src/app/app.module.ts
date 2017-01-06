@@ -4,7 +4,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { BookService } from '../providers/book-service';
 import { AddBookPage } from '../pages/add-book/add-book';
-import { Storage } from '@ionic/storage';
+
 
 
 @NgModule({
@@ -26,8 +26,7 @@ import { Storage } from '@ionic/storage';
 
   ],
   providers: [
-    BookService,
-    Storage
+    BookService
     ]
 })
 export class AppModule {}
