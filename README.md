@@ -1,10 +1,10 @@
-# IonicFramework
+# LibrayOS Mobile App - IonicFramework
 
 This projects is developed for Ionic Framework learning.
 
 ###Purpose : 
 
-Developing a LibraryOS web application by using ionic features.
+Developing a LibraryOS mobile application by using ionic features.
 
 ###Development : 
 
